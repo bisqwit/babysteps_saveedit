@@ -123,3 +123,14 @@ a force that pushes the two colliding objects apart.
 
 Just rewrite the same save using the same dump, but when loading the save,
 try lifting a leg or leaning in some direction. This usually seems to help.
+
+## The coordinate system
+
+* X coordinates range from 0 ≤ x < 512.
+  The game automatically wraps the coordinates in this range.
+* Y coordinates range from approximately 100–1200 in a normal gameplay,
+  and Z coordinates approximately 70–3300. The unit is approximately such
+  that a change of ±1 equals 1 meter of distance. The coordinates actually
+  wrap such that a full loop of the game increases Y by 1300 and Z by 3328.
+  That is, (X,Y,Z) and (X,Y+n×1300,Z+n×3328) are the same location for |n| ∈
+  {0,1,2}. If |n| ≥ 3, then there will be glitches with collisions.

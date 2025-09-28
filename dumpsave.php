@@ -219,11 +219,6 @@ $preamble = <<<EOF
 /* Dump datetime: $dumptime */
 /* Save datetime: $savetime */
 /* Savefile name: $savefile */
-/* On coordinates: */
-/*  The world repeats such that a full loop of the game increases Y by 1300 and Z by 3328. */
-/*  It works for three full loops in both positive and negative direction. */
-/*  On the fourth loop (|Z| > approx 8192), most props lose collision. */
-/*  X coordinates are in range 0-512, and it wraps automatically. */
 EOF;
 print "$preamble\n$r";
 
