@@ -61,12 +61,13 @@ function Encode($d)
       return chr($d);
     elseif($d >= 0 && $d <= 0xFF)
       return chr(0xCC) . chr($d);
-    elseif($d <= 0xFFFF)
+    elseif($d >= 0 && $d <= 0xFFFF)
       return chr(0xCD) . chr($d >> 8) . chr($d & 0xFF);
     else
     {
-      print("ERROR: Don't know how to encode integers larger than 65535\n");
-      return '';
+      print("ERROR: For integers, I only know the encoding for 0..65535. Don't know how $d works.\n");
+      // Resort to encoding as a float
+      return chr(0xCA) . pack('G', $d);
     }
   }
   print("ERROR: Unknown data type in {$d}\n");

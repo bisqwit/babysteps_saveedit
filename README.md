@@ -64,7 +64,7 @@ as the game continuously updates the savefile.
 4. In the game, switch back to the original save slot
 5. Resume game
 
-### To make modifications to the state of the currently running game:
+### To make particular modifications to the state of the currently running game:
 
 1. Exit to main menu
 2. Switch to another save slot (e.g. if you are running alpha, switch to beta)
@@ -96,15 +96,15 @@ Find `MeltPercent` and changed the value into `0.0`. Brand new ice cream!
 
 ### I want to cheat and attain the two hardest achievements.
 
-* Change Nate’s coordinates to: 218.5, 972.3, 2804
+* Change Nate’s coordinates to: $$218.5, 972.3, 2804$$
 * If you don’t yet have the pedometer:
     * Add `Pedometer` to the list of flags.
     * Add `Pedometer` to movable items (copy an existing item, rename it), and change its coordinates to the same as Nate’s.
     * Add `Pedometer` also the list of carriables (is-being-carried), and set it to 1.
 * If you don’t yet have the alarm clock:
     * Same instructions as above, but for `AlarmClock` rather than `Pedometer`.
-* Change the number of steps to less than 10000.
-* Change the number of seconds played to less than 5400.
+* Change the number of steps to less than $$10000$$.
+* Change the number of seconds played to less than $$5400$$.
 
 ### Move Nate on the roof of whatever you're currently standing inside.
 
@@ -126,11 +126,16 @@ try lifting a leg or leaning in some direction. This usually seems to help.
 
 ## The coordinate system
 
-* X coordinates range from 0 ≤ x < 512.
+* The coordinate unit is approximately such that a change of $$±1$$ equals $$1$$ meter of distance.
+* X coordinates range from $$0 ≤ X < 512$$.
   The game automatically wraps the coordinates in this range.
-* Y coordinates range from approximately 100–1200 in a normal gameplay,
-  and Z coordinates approximately 70–3300. The unit is approximately such
-  that a change of ±1 equals 1 meter of distance. The coordinates actually
-  wrap such that a full loop of the game increases Y by 1300 and Z by 3328.
-  That is, (X,Y,Z) and (X,Y+n×1300,Z+n×3328) are the same location for |n| ∈
-  {0,1,2}. If |n| ≥ 3, then there will be glitches with collisions.
+* Y coordinates range approximately $$100–1200$$ in a normal gameplay,
+  and the Z coordinates approximately $$70–3300$$.
+  The coordinates actually
+  wrap such that a full loop of the game increases $$Y$$ by $$1300$$ and $$Z$$ by $$3328$$.
+  That is, $$(X,Y,Z)$$ and $$(X,Y+1300n,Z+3328n)$$
+  are the same location for any $$n ∈ ℤ, (X,Y,Z) ∈ ℝ^3$$.
+* If $$|Z| ≥ 10000$$ (exact threshold unknown, probably $$8192$$),
+  then there will be glitches with collisions.
+* The starting coordinates are approximately $$(473, 119, 72)$$.
+* The ending coordinates are approximately $$(218, 971, 2820)$$.
