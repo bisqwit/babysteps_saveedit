@@ -1,3 +1,5 @@
+# Baby Steps  savestate manipulation tools
+
 Tools for writing and reading Baby Steps save files.
 
 These files are located on Linux in:
@@ -32,3 +34,13 @@ Options: `-f` = force overwrite, `-n` = dry-run, `-i` = don't overwrite
 
 `/* Copyright (C) 2025 Joel Yliluoma - https://iki.fi/bisqwit */`
 `/* License: BSD */`
+
+## TIPS
+
+### Did you lose your chicken bird?
+### Did your \<item\> fall through the floor or through the entire world mesh?
+### Did you forget where you placed your irreplaceable item?
+
+Dump the save, find the item (such as KeyringTrophy) or the bird (Huey and/or Dewie),
+and change their coordinates (the first 3-float tuple)
+into the same values as the player character's coordinates.
