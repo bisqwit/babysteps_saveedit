@@ -19,6 +19,10 @@ function DumpCounters()
     case '[4]':    return "-- Nate looking direction (XZ angle)";
     case '[5]':    return "-- Nate looking direction related? Not sure";
     case '[6]':    return "-- Unknown structure";
+    case '[6,2]':  return "-- Unknown counter (seems to be zero if the coordinates are too)";
+    case '[6,3]':  return "-- Unknown coordinates";
+    case '[6,4]':  return "-- Unknown coordinates";
+    case '[6]':    return "-- Unknown structure";
     case '[7]':    return "-- Unknown integer";
     case '[8]':    return "-- Unknown byte";
     case '[9]':    return "-- Number of seconds played";

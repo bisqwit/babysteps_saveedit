@@ -108,6 +108,9 @@ foreach($argv as $a)
 $r = file_get_contents('php://stdin');
 /* Strip comments */
 $r = preg_replace('@/[*].*[*]/@m', '', $r);
+/* Remove any occurrences of comma before ] or } */
+$r = preg_replace('@,+\s*([\]\}])@', '\1', $r);
+
 $data = json_decode($r);
 $s = encode($data);
 if($fake_write)
