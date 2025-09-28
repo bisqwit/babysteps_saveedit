@@ -12,8 +12,8 @@ function DumpCounters()
     case '[0,0]':  return "-- Event or item unlocking flags, in order of activation";
     case '[1]':    return "-- Chapter number (0=poison swamp, 9=complete)";
     case '[2]':    return "-- Unknown byte";
-    case '[3]':    return "-- Player coordinates (X,Y,Z)";
-    case '[3,0]':  return "-- X coordinate (+ = east)";
+    case '[3]':    return "-- Player coordinates (X,Y,Z). Unit ~ meters";
+    case '[3,0]':  return "-- X coordinate (+ = east. Range: 0 <= x < 512. Wraps at either side.)";
     case '[3,1]':  return "-- Y coordinate (+ = up)";
     case '[3,2]':  return "-- Z coordinate (+ = north)";
     case '[4]':    return "-- Nate looking direction (XZ angle)";
@@ -209,11 +209,38 @@ $r = json_encode($data, JSON_PRETTY_PRINT | JSON_PRESERVE_ZERO_FRACTION)."\n";
 
 $r = preg_replace('/^( *).*"-- (.*)",/m', '\1/* \2 */', $r);
 
-$r = "/* This dump is JSON formatted with comments. */\n" .
-     "/* You can add your own comments if you want; they are ignored by writesave.php. */\n" .
-     "/* Dump datetime: ".date('Y-m-d H:i:s') . " */\n" .
-     "/* Save datetime: ".date('Y-m-d H:i:s', filemtime($argv[1])) . " */\n" .
-     "/* Savefile name: ".$argv[1]. " */\n" .
-     $r;
+$dumptime = date('Y-m-d H:i:s');
+$savetime = date('Y-m-d H:i:s', filemtime($argv[1]));
+$savefile = $argv[1];
 
-print $r;
+$preamble = <<<EOF
+/* This dump is JSON formatted with comments. */
+/* You can add your own comments if you want; they are ignored by writesave.php. */
+/* Dump datetime: $dumptime */
+/* Save datetime: $savetime */
+/* Savefile name: $savefile */
+/* On coordinates: */
+/*  The world repeats such that a full loop of the game increases Y by 1300 and Z by 3328. */
+/*  It works for three full loops in both positive and negative direction. */
+/*  On the fourth loop (|Z| > approx 8192), most props lose collision. */
+/*  X coordinates are in range 0-512, and it wraps automatically. */
+EOF;
+print "$preamble\n$r";
+
+/*
+SPOILER: 230,971,2812 for going for walk
+    Starting coordinates are around:
+      472.9, 145.9 (or 119), 72
+    Same at:
+      472.9, 1445.8, 3400
+    Same at:
+      472.9, 2745.8, 6728
+    Same at:
+      472.9, 4045.8, 10046 -- however, most props lose collision
+    Same at:
+      472.9, -1154.1, -3256
+    Same at:
+      472.9, -2454.1, -6584
+    Same at:
+      472.9, -3754.1, -9912 -- however, most props lose collision
+*/

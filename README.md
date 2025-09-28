@@ -70,7 +70,7 @@ Options: `-f` = force overwrite, `-n` = dry-run, `-i` = don't overwrite
 4. Switch back to the original save slot in the game
 5. Resume game
 
-### Did you lose your chicken bird? \\ Did your \<item\> fall through the floor or through the entire world mesh? \\ Did you lose a carriable item and don’t know where it, or it’s too far away?
+### Did you lose your chicken pet bird? \\ Did your \<item\> fall through the floor or through the entire world mesh? \\ Did you lose a carriable item and don’t know where it, or it’s too far away?
 
 1. Dump the save.
 2. Find the item (such as `KeyringTrophy`) or the bird (`Huey` and/or `Dewie`) in the list of movable items, and change their coordinates (the first 3-float tuple) into the same values as the player character's coordinates.
