@@ -21,11 +21,13 @@ where `#` is some number, and in Windows in:
 
 You need the PHP commandline version. For example, `apt install php-cli` in Linux.
 
-To dump save contents:
+## Running
+
+To dump the save contents (creates an editable text file that can be used to inspect and modify the save data):
 
 `php dumpsave.php save0.sav > dump.json`
 
-To inspect and edit save contents:
+To inspect and edit the save contents:
 
 Edit `dump.json` 
 
@@ -79,13 +81,13 @@ as the game continuously updates the savefile.
 4. In the game, switch back to the original save slot
 5. Resume game
 
-### Did you lose your chicken pet bird? \\ Did your \<item\> fall through the floor or through the entire world mesh? \\ Did you lose a carriable item and don’t know where it, or it’s too far away?
+### Did you lose your chicken pet bird? \\ Did your keys fall through the floor? \\ Did you lose an item and don’t know where it is, or it’s too far away?
 
-1. Dump the save.
-2. Find the item (such as `KeyringTrophy`) or the bird (`Huey` and/or `Dewie`) in the list of movable items, and change their coordinates (the first 3-float tuple) into the same values as the player character's coordinates.
+1. Dump the save (run dumpsave as explained in the [running](#running) chapter).
+2. Find the item (such as `KeyringTrophy`) or the bird (`Huey` and/or `Dewie`) in the list of movable items, and change their coordinates (the first 3-float tuple) into the same values as the player character's coordinates (optionally $$±0.1$$).
     * If the item is a carriable item and you want Nate to be carrying it, also change the corresponding `0` to `1` in the is-being-carried section.
       Note that it’s not enough to change this flag: The item also has to be at reach of Nate.
-3. Write the save.
+3. Write the save (run writesave as explained in the [running](#running) chapter).
 
 ### Broke the vase, and want to mend it (unbreak)?
 
@@ -136,7 +138,8 @@ try lifting a leg or leaning in some direction. This usually seems to help.
   The coordinates actually
   wrap such that a full loop of the game increases $$Y$$ by $$1300$$ and $$Z$$ by $$3328$$.
   That is, $$(X,\   Y,\   Z)$$ and $$(X,\   Y+1300n,\   Z+3328n)$$
-  are the same location for any $$n ∈ ℤ, (X,Y,Z) ∈ ℝ^3$$.
+  correspond the same location for any $$n ∈ ℤ, (X,Y,Z) ∈ ℝ^3$$.
+  Movable items do *not* follow this mirroring.
 * If $$|Z| ≥ 10000$$ (exact threshold unknown, probably $$8192$$),
   then there will be glitches with collisions.
 * The starting coordinates are approximately $$(473,\   119,\   72)$$.
@@ -145,8 +148,6 @@ try lifting a leg or leaning in some direction. This usually seems to help.
 ## Python version
 
 Alternatives that depend on Python instead of PHP are provided.
-I have verified that they produce equivalent outputs compared to the PHP
-versions, although I have not verified subtle behaviors like file clobbering.
 
 Running:
 
@@ -156,11 +157,16 @@ and
 
 `python3 writesave.py [options] save0.sav < dump.json`
 
-They are automatically translated
-from the PHP code
-by a locally-hosted
-[`qwen3:30b-a3b-thinking-2507-q8_0`](https://ollama.com/library/qwen3)
-AI
+### AI-generated
+
+<details>
+<summary>
+The Python code is automatically translated
+from the PHP code by a locally hosted AI.
+</summary>
+
+Particularly,
+[`qwen3:30b-a3b-thinking-2507-q8_0`](https://ollama.com/library/qwen3),
 using the following two prompts for the dump program
 and for the write program respectively
 (with some subtle prodding to guide towards desired behavior):
@@ -168,3 +174,7 @@ and for the write program respectively
 > Translate this PHP code into Python please. Caveats: 1. In python, s[a] where s is string and a is integer does not result in integer, it results in a substring. 2. The json.dumps in Python does not accept "bytes" type data fields. Therefore, you need to pay special attention that the key types A0..BF generate strings, not bytes. 3. The PHP program reads the file contents as a string and interprets it byte by byte. In Python, if you do the same, you will get UTF8 decoding errors; you must convert the file data into bytes rather than a string. 4. Do not attempt to run the python code you generate, because you will be confused by its output and get sidetracked from the actual task. I repeat, DO NOT RUN python tool. DO NOT. DO NOT USE TOOLS. REMEMBER, DO NOT USE TOOLS. DO NOT USE TOOLS!! \`\`\`[php code is here]\`\`\`
 
 > Translate this PHP code into Python please. Caveats: 1. Note that the encode() function creates a raw byte stream. 2. Do not attempt to run the python code you generate, because you will be confused by its output and get sidetracked from the actual task. I repeat, DO NOT RUN python tool. DO NOT. DO NOT USE TOOLS. REMEMBER, DO NOT USE TOOLS. DO NOT USE TOOLS!! \`\`\`[php code is here]\`\`\`
+
+I have verified that they produce equivalent outputs compared to the PHP
+versions, although I have not verified subtle behaviors like file clobbering.
+</details>
