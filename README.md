@@ -40,34 +40,41 @@ Options: `-f` = force overwrite, `-n` = dry-run, `-i` = don't overwrite
 
 ## TIPS
 
-### To quicksave:
+### To quicksave (create a checkpoint):
 
 1. Exit to main menu
 2. Switch to another save slot (e.g. if you are running alpha, switch to beta)
 3. Backup the savefile by copying the savefile to safety (save0.sav for alpha, save1.sav for beta, save2.sav for gamma)
     * Could do e.g. `zip -9 safety.zip *.sav`
-4. Switch back to the original save slot in the game
+4. In the game, switch back to the original save slot
 5. Resume game
 
-### To load a quicksave:
+You can probably skip steps 2 and 4.
+You should not skip steps 1 and 5,
+because then you risk backing up a broken file
+that is half-way being updated,
+as the game continuously updates the savefile.
+
+### To load a quicksave (quickload? / restore a checkpoint):
 
 1. Exit to main menu
 2. Switch to another save slot (e.g. if you are running alpha, switch to beta)
 3. Overwrite the savefile with the file you copied to safety earlier
     * Could do e.g. `unzip safety.zip save0.sav`
-4. Switch back to the original save slot in the game
+4. In the game, switch back to the original save slot
 5. Resume game
 
 ### To make modifications to the state of the currently running game:
 
 1. Exit to main menu
 2. Switch to another save slot (e.g. if you are running alpha, switch to beta)
+3. Modify the save while the game is not looking:
     * Dump the save contents using `php dumpsave.php filename > savedump.json` (save0.sav for alpha, save1.sav for beta, save2.sav for gamma)
     * Edit the savedump contents `$EDITOR savedump.json` or `notepad savedump.json`, save the changes
     * Write back the save contents using `php writesave.php filename < savedump.json`
         * Or `php writesave.php -f filename < savedump.json` if you know you want to overwrite the file
         * Or `php writesave.php -n filename < savedump.json` if you just want a hexdump of what *would* be written without actually performing any changes
-4. Switch back to the original save slot in the game
+4. In the game, switch back to the original save slot
 5. Resume game
 
 ### Did you lose your chicken pet bird? \\ Did your \<item\> fall through the floor or through the entire world mesh? \\ Did you lose a carriable item and don’t know where it, or it’s too far away?
