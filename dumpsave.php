@@ -93,6 +93,13 @@ function ReadItem()
       $a += 1+$len;
       return $k;
     }
+    if($key == 0xCA) // Float
+    {
+      $a += 5;
+      $k = unpack('G', substr($s, $a-4, 4));
+      return $k[1];
+    }
+    // Presumably, CB = double
     if($key == 0xCC) // Integer (8-bit)
     {
       ++$a;
@@ -104,12 +111,8 @@ function ReadItem()
       $k = unpack('n', substr($s, $a-2, 2));
       return $k[1];
     }
-    if($key == 0xCA) // Float
-    {
-      $a += 5;
-      $k = unpack('G', substr($s, $a-4, 4));
-      return $k[1];
-    }
+    // Presumably, CE = 32-bit integer, CF = 64-bit integer
+
     if($key == 0xDC) // Tuple, with N items
     {
       $a += 3;
@@ -210,8 +213,3 @@ $r = "/* This dump is JSON formatted with comments. */\n" .
      $r;
 
 print $r;
-
-// List at 0x03
-// Dict at 0xAF
-// Dict at 0x4FB
-// At end: CC B7

@@ -1,7 +1,6 @@
 <?php
 /* Copyright (C) 2025 Joel Yliluoma - https://iki.fi/bisqwit */
 /* License: BSD */
-global $counters;
 
 function Encode($d)
 {
@@ -132,8 +131,3 @@ else
     }
   file_put_contents($outfn, $s);
 }
-
-// List at 0x03
-// Dict at 0xAF
-// Dict at 0x4FB
-// At end: CC B7
