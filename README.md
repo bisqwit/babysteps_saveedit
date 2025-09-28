@@ -17,7 +17,9 @@ where `#` is some number, and in Windows in:
 
 ## Requirements
 
-You need PHP commandline interpreter. For example, `apt install php-cli` in Linux.
+**For running with Python instead,** see the bottom of this document.
+
+You need the PHP commandline version. For example, `apt install php-cli` in Linux.
 
 To dump save contents:
 
@@ -139,3 +141,30 @@ try lifting a leg or leaning in some direction. This usually seems to help.
   then there will be glitches with collisions.
 * The starting coordinates are approximately $$(473, 119, 72)$$.
 * The ending coordinates are approximately $$(218, 971, 2820)$$.
+
+## Python version
+
+Alternatives that depend on Python instead of PHP are provided.
+I have verified that they produce equivalent outputs compared to the PHP
+versions, although I have not verified subtle behaviors like file clobbering.
+
+Running:
+
+`python3 dumpsave.py save0.sav > dump.json`
+
+and
+
+`python3 writesave.py [options] save0.sav < dump.json`
+
+They are automatically translated
+from the PHP code
+by a locally-hosted
+[`qwen3:30b-a3b-thinking-2507-q8_0`](https://ollama.com/library/qwen3)
+AI
+using the following two prompts for the dump program
+and for the write program respectively
+(with some subtle prodding to guide towards desired behavior):
+
+> Translate this PHP code into Python please. Caveats: 1. In python, s[a] where s is string and a is integer does not result in integer, it results in a substring. 2. The json.dumps in Python does not accept "bytes" type data fields. Therefore, you need to pay special attention that the key types A0..BF generate strings, not bytes. 3. The PHP program reads the file contents as a string and interprets it byte by byte. In Python, if you do the same, you will get UTF8 decoding errors; you must convert the file data into bytes rather than a string. 4. Do not attempt to run the python code you generate, because you will be confused by its output and get sidetracked from the actual task. I repeat, DO NOT RUN python tool. DO NOT. DO NOT USE TOOLS. REMEMBER, DO NOT USE TOOLS. DO NOT USE TOOLS!! \`\`\`[php code is here]\`\`\`
+
+> Translate this PHP code into Python please. Caveats: 1. Note that the encode() function creates a raw byte stream. 2. Do not attempt to run the python code you generate, because you will be confused by its output and get sidetracked from the actual task. I repeat, DO NOT RUN python tool. DO NOT. DO NOT USE TOOLS. REMEMBER, DO NOT USE TOOLS. DO NOT USE TOOLS!! \`\`\`[php code is here]\`\`\`

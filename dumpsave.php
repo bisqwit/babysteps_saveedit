@@ -97,7 +97,7 @@ function ReadItem()
       $a += 1+$len;
       return $k;
     }
-    if($key == 0xCA) // Float
+    if($key == 0xCA) // Float (big-endian 4-byte)
     {
       $a += 5;
       $k = unpack('G', substr($s, $a-4, 4));
@@ -109,7 +109,7 @@ function ReadItem()
       ++$a;
       return ord($s[$a++]);
     }
-    if($key == 0xCD) // Integer (16-bit)
+    if($key == 0xCD) // Integer (16-bit) (big-endian unsigned)
     {
       $a += 3;
       $k = unpack('n', substr($s, $a-2, 2));
@@ -117,7 +117,7 @@ function ReadItem()
     }
     // Presumably, CE = 32-bit integer, CF = 64-bit integer
 
-    if($key == 0xDC) // Tuple, with N items
+    if($key == 0xDC) // Tuple, with N items (N = big-endian 16-bit int)
     {
       $a += 3;
       $k = unpack('n', substr($s, $a-2, 2));
@@ -133,7 +133,7 @@ function ReadItem()
       }
       return $res;
     }
-    if($key == 0xDE) // Dict, with N items
+    if($key == 0xDE) // Dict, with N items (N = big-endian 16-bit int)
     {
       $a += 3;
       $k = unpack('n', substr($s, $a-2, 2));
@@ -153,7 +153,7 @@ function ReadItem()
       return $res;
     }
     ++$a;
-    return sprintf("byte 0x%02X", $key);
+    return sprintf("byte 0x%02X", $key); // Unknown byte
     // Save1:                                            Save0:
     //  List of 25 somethings:                            List of 25 somethings:
     //  List of strings.                                  List of strings.
