@@ -27,3 +27,8 @@ To write back the changed contents:
 `php writesave.php [options] save0.sav < dump.json`
 
 Options: `-f` = force overwrite, `-n` = dry-run, `-i` = don't overwrite
+
+## License stuff
+
+`/* Copyright (C) 2025 Joel Yliluoma - https://iki.fi/bisqwit */`
+`/* License: BSD */`

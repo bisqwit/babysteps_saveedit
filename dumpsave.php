@@ -1,4 +1,6 @@
 <?php
+/* Copyright (C) 2025 Joel Yliluoma - https://iki.fi/bisqwit */
+/* License: BSD */
 global $counters;
 
 function DumpCounters()
