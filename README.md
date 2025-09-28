@@ -98,7 +98,7 @@ Find `MeltPercent` and changed the value into `0.0`. Brand new ice cream!
 
 ### I want to cheat and attain the two hardest achievements.
 
-* Change Nate’s coordinates to: $$218.5, 972.3, 2804$$
+* Change Nate’s coordinates to: $$218.5,\    972.3,\    2804$$
 * If you don’t yet have the pedometer:
     * Add `Pedometer` to the list of flags.
     * Add `Pedometer` to movable items (copy an existing item, rename it), and change its coordinates to the same as Nate’s.
@@ -135,12 +135,12 @@ try lifting a leg or leaning in some direction. This usually seems to help.
   and the Z coordinates approximately $$70–3300$$.
   The coordinates actually
   wrap such that a full loop of the game increases $$Y$$ by $$1300$$ and $$Z$$ by $$3328$$.
-  That is, $$(X,Y,Z)$$ and $$(X,Y+1300n,Z+3328n)$$
+  That is, $$(X,\   Y,\   Z)$$ and $$(X,\   Y+1300n,\   Z+3328n)$$
   are the same location for any $$n ∈ ℤ, (X,Y,Z) ∈ ℝ^3$$.
 * If $$|Z| ≥ 10000$$ (exact threshold unknown, probably $$8192$$),
   then there will be glitches with collisions.
-* The starting coordinates are approximately $$(473, 119, 72)$$.
-* The ending coordinates are approximately $$(218, 971, 2820)$$.
+* The starting coordinates are approximately $$(473,\   119,\   72)$$.
+* The ending coordinates are approximately $$(218,\   971,\   2820)$$.
 
 ## Python version
 
