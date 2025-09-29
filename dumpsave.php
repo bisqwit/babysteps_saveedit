@@ -103,6 +103,12 @@ function ReadItem()
       $k = unpack('G', substr($s, $a-4, 4));
       return $k[1];
     }
+    if($key == 0xCB) // Double (big-endian 8-byte)
+    {
+      $a += 9;
+      $k = unpack('E', substr($s, $a-8, 8));
+      return $k[1];
+    }
     // Presumably, CB = double
     if($key == 0xCC) // Integer (8-bit)
     {
@@ -115,7 +121,13 @@ function ReadItem()
       $k = unpack('n', substr($s, $a-2, 2));
       return $k[1];
     }
-    // Presumably, CE = 32-bit integer, CF = 64-bit integer
+    if($key == 0xCE) // Integer (32-bit) (big-endian unsigned)
+    {
+      $a += 5;
+      $k = unpack('N', substr($s, $a-4, 4));
+      return $k[1];
+    }
+    // Presumably, CF = 64-bit integer
 
     if($key == 0xDC) // Tuple, with N items (N = big-endian 16-bit int)
     {

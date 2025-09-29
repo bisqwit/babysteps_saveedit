@@ -130,6 +130,11 @@ def ReadItem():
             float_bytes = s[a[0]-4:a[0]]
             return struct.unpack('>f', float_bytes)[0]
         
+        if key == 0xCB:
+            a[0] += 8
+            float_bytes = s[a[0]-8:a[0]]
+            return struct.unpack('>d', float_bytes)[0]
+        
         if key == 0xCC:
             val = s[a[0]]
             a[0] += 1
@@ -139,6 +144,11 @@ def ReadItem():
             a[0] += 2
             bytes_16 = s[a[0]-2:a[0]]
             return struct.unpack('>H', bytes_16)[0]
+        
+        if key == 0xCE:
+            a[0] += 4
+            bytes_32 = s[a[0]-4:a[0]]
+            return struct.unpack('>I', bytes_32)[0]
         
         if key == 0xDC:
             a[0] += 2

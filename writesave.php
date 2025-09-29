@@ -54,6 +54,7 @@ function Encode($d)
   if(is_float($d))
   {
     return chr(0xCA) . pack('G', $d);
+    #return chr(0xCB) . pack('E', $d);
   }
   if(is_int($d))
   {
@@ -63,9 +64,11 @@ function Encode($d)
       return chr(0xCC) . chr($d);
     elseif($d >= 0 && $d <= 0xFFFF)
       return chr(0xCD) . chr($d >> 8) . chr($d & 0xFF);
+    elseif($d >= 0 && $d <= 0xFFFFFFFF)
+      return chr(0xCE) . chr($d >> 24) . chr(($d >> 16) & 0xFF) . chr(($d >> 8) & 0xFF) . chr($d & 0xFF);
     else
     {
-      print("ERROR: For integers, I only know the encoding for 0..65535. Don't know how $d works.\n");
+      print("ERROR: For integers, I only know the encoding for 0..4294967295. Don't know how $d works.\n");
       // Resort to encoding as a float
       return chr(0xCA) . pack('G', $d);
     }

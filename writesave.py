@@ -51,8 +51,10 @@ def encode(data):
             return bytes([0xCC, data])
         elif 0 <= data <= 0xFFFF:
             return bytes([0xCD, (data >> 8) & 0xFF, data & 0xFF])
+        elif 0 <= data <= 0xFFFFFFFF:
+            return bytes([0xCE, (data >> 24) & 0xFF, (data >> 16) & 0xFF, (data >> 8) & 0xFF, data & 0xFF])
         else:
-            print(f"ERROR: For integers, I only know the encoding for 0..65535. Don't know how {data} works.\n")
+            print(f"ERROR: For integers, I only know the encoding for 0..4294967295. Don't know how {data} works.\n")
             return bytes([0xCA]) + struct.pack('!f', data)
     else:
         print(f"ERROR: Unknown data type in {data}\n")
