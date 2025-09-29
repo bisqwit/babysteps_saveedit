@@ -5,16 +5,6 @@ Gabe Cuzzillo, Maxi Boch, and Bennett Foddy, published by Devolved Digital.
 
 This repository contains tools for reading and writing Baby Steps save files.
 
-## Where to find your savestates
-
-On Linux, these files are located in:
-
-`$HOME/.steam/steamapps/compatdata/1281040/pfx/drive_c/users/steamuser/AppData/LocalLow/DefaultCompany/Babysteps/#/save/`
-
-where `#` is some number, and in Windows in:
-
-`C:\Users\\%USERNAME%\AppData\LocalLow\DefaultCompany\BabySteps\#\save` .
-
 ## Requirements
 
 **For running with Python instead,** see the bottom of this document.
@@ -37,10 +27,15 @@ To write back the changed contents:
 
 Options: `-f` = force overwrite, `-n` = dry-run, `-i` = don't overwrite
 
-## License stuff
+## Where to find your savestates
 
-`/* Copyright (C) 2025 Joel Yliluoma - https://iki.fi/bisqwit */`
-`/* License: BSD */`
+On Linux, these files are located in:
+
+`$HOME/.steam/steamapps/compatdata/1281040/pfx/drive_c/users/steamuser/AppData/LocalLow/DefaultCompany/Babysteps/#/save/`
+
+where `#` is some number, and in Windows in:
+
+`C:\Users\\%USERNAME%\AppData\LocalLow\DefaultCompany\BabySteps\#\save` .
 
 ## TIPS
 
@@ -57,7 +52,8 @@ You can probably skip steps 2 and 4.
 You should not skip steps 1 and 5,
 because then you risk backing up a broken file
 that is half-way being updated,
-as the game continuously updates the savefile.
+as the game continuously updates the savefile
+in non-atomic fashion.
 
 ### To load a quicksave (quickload? / restore a checkpoint):
 
@@ -178,3 +174,8 @@ and for the write program respectively
 I have verified that they produce equivalent outputs compared to the PHP
 versions, although I have not verified subtle behaviors like file clobbering.
 </details>
+
+## License stuff
+
+`/* Copyright (C) 2025 Joel Yliluoma - https://iki.fi/bisqwit */`
+`/* License: BSD */`
