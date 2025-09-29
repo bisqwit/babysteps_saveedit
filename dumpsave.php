@@ -36,7 +36,7 @@ function DumpCounters()
     case '[17]':   return "-- Item-specific data, such as MeltPercent for IceTrophy";
     case '[18]':   return "-- Item-specific data2, such as IceTrophiesGotten (# of ice creams received)";
     case '[19]':   return "-- Unknown byte";
-    case '[20]':   return "-- Nate's XYZ velocity vector";
+    case '[20]':   return "-- Nate's XYZ velocity vector (maybe?) The game might normalize this first.";
     case '[21]':   return "-- Unknown integer";
     case '[22]':   return "-- Audio-related counters";
     case '[23]':   return "-- Audio-related timestamps";

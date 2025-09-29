@@ -37,6 +37,22 @@ where `#` is some number, and in Windows in:
 
 `C:\Users\\%USERNAME%\AppData\LocalLow\DefaultCompany\BabySteps\#\save` .
 
+## The type of modifications you can make
+
+You can edit, including, but not limited to:
+
+* List of unique unlocked events and items
+    * Such as “JimCaveMeeting” if you talked to Jim in the first cave, “stetson” if you took the stetson hat, or “FruitPapaya” if you ate the papaya fruit.
+* Current chapter number (0–9)
+    * Chapters in order are: Poison Swamp, Donkey Farm, Poison {Forest, Slopes, Desert, Castle, Hills, Mines, Icefields}, Complete.
+* Player’s world coordinates (XYZ) at 32-bit floatingpoint precision
+    * See [the coordinate system](#the-coordinate-system) for details
+* Locations (XYZ) and orientations (quaternion) of every movable item
+* For every carriable item, flag indicating whether Nate is carrying it currently
+* Some item-specific data, such as melt-percent for the icecream
+* Number of seconds played
+* Number of steps taken
+
 ## TIPS
 
 ### To quicksave (create a checkpoint):
@@ -80,7 +96,7 @@ in non-atomic fashion.
 ### Did you lose your chicken pet bird? \\ Did your keys fall through the floor? \\ Did you lose an item and don’t know where it is, or it’s too far away?
 
 1. Dump the save (run dumpsave as explained in the [running](#running) chapter).
-2. Find the item (such as `KeyringTrophy`) or the bird (`Huey` and/or `Dewie`) in the list of movable items, and change their coordinates (the first 3-float tuple) into the same values as the player character's coordinates (optionally $$±0.1$$).
+2. Find the item (such as `KeyringTrophy`) or the bird (such as `Huey`) in the list of movable items, and change their coordinates (the first 3-float tuple) into the same values as the player character's coordinates (optionally $$±0.1$$).
     * If the item is a carriable item and you want Nate to be carrying it, also change the corresponding `0` to `1` in the is-being-carried section.
       Note that it’s not enough to change this flag: The item also has to be at reach of Nate.
 3. Write the save (run writesave as explained in the [running](#running) chapter).

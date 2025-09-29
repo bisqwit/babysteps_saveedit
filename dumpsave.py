@@ -66,7 +66,7 @@ def DumpCounters():
     if s == '[19]':
         return "-- Unknown byte"
     if s == '[20]':
-        return "-- Nate's XYZ velocity vector"
+        return "-- Nate's XYZ velocity vector (maybe?) The game might normalize this first."
     if s == '[21]':
         return "-- Unknown integer"
     if s == '[22]':
