@@ -195,3 +195,6 @@ versions, although I have not verified subtle behaviors like file clobbering.
 
 `/* Copyright (C) 2025 Joel Yliluoma - https://iki.fi/bisqwit */`
 `/* License: BSD */`
+
+If you want to support my work, some options are listed at:
+[https://bisqwit.iki.fi/donate.html](https://bisqwit.iki.fi/donate.html)
