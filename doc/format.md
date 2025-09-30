@@ -19,3 +19,41 @@ Expression is:
 | DC | What follows is 2 bytes: An unsigned integer $$n$$ encoded in big-endian format. After that, a tuple with $$n$$ items. See encoding of tuple above. For $$n<16$$, 90..9F is used instead.
 | DE | What follows is 2 bytes: An unsigned integer $$n$$ encoded in big-endian format. After that, a dictionary with $$n$$ items. See encoding of dictionary above. For $$n<16$$, 80..8F is used instead.
 | other | Other values have not been observed so far.
+
+The actual savestate currently has the following format, wherein $$K$$ is short for "byte 0xC0, 0xC2 or 0xC3 of unknown meaning":
+* 25-element list of:
+    1. List of flags, each is a string
+    1. Integer: chapter number
+    1. $$K$$
+    1. Three-element tuple: Player coordinates (three floats)
+    1. Float: XZ angle of Nate’s pelvis
+    1. Float: Something related to Nate’s angle
+    1. Unknown 5-element tuple, containing:
+        * Two instances of $$K$$
+        * An integer of unknown meaning
+        * Two 3-element tuples containing coordinates
+    1. Unknown integer
+    1. $$K$$
+    1. Float: Number of seconds played
+    1. Two instances of $$K$$
+    1. An integer of unknown meaning
+    1. A dictionary containing:
+        * For every movable item, key = item’s name and value is a two-element tuple, containing:
+            * Three-element tuple: Item’s coordinates
+            * Four-element tuple: Item’s rotation angle (quaternion)
+    1. A dictionary containing:
+        * For every carriable item, key = item’s name and value is integer 0 or 1, indicating whether the item is being carried presently
+    1. A dictionary of unknown meaning
+    1. $$K$$
+    1. A dictionary containing item-specific data
+    1. Another dictionary containing item-specific data
+    1. $$K$$
+    1. Three-element tuple of floats, of unknown purpose (possibly Nate’s velocity vector)
+    1. An integer of unknown meaning
+    1. Dictionary: Key = audiokey_timesplayed, value = integer
+    1. Dictionary: Key = audiokey_lastplay, value = string datetime
+    1. Integer: The number of steps taken
+    
+It is not rare for a game to use a straightforward serialization of game
+data for its savestates. That’s what many Unreal Engine games do too, for
+example The Talos Principle 2 and Mirror’s Edge.

@@ -41,7 +41,7 @@ where `#` is some number, and in Windows in:
 
 You can edit, including, but not limited to:
 
-* List of unique unlocked events and items
+* List of unique flags you have activated
     * Such as “JimCaveMeeting” if you talked to Jim in the first cave, “stetson” if you took the stetson hat, or “FruitPapaya” if you ate the papaya fruit.
 * Current chapter number (0–9)
     * Chapters in order are: Poison Swamp, Donkey Farm, Poison {Forest, Slopes, Desert, Castle, Hills, Mines, Icefields}, Complete.
@@ -52,6 +52,8 @@ You can edit, including, but not limited to:
 * Some item-specific data, such as melt-percent for the icecream
 * Number of seconds played
 * Number of steps taken
+
+See [the savestate format documentation](doc/format.md) for more details on what’s in there.
 
 ## TIPS
 
@@ -171,10 +173,10 @@ and
 
 ### AI-generated
 
-<details>
-<summary>
 The Python code is automatically translated
 from the PHP code by a locally hosted AI.
+<details>
+<summary>See details…
 </summary>
 
 Particularly,
@@ -187,9 +189,10 @@ and for the write program respectively
 
 > Translate this PHP code into Python please. Caveats: 1. Note that the encode() function creates a raw byte stream. 2. Do not attempt to run the python code you generate, because you will be confused by its output and get sidetracked from the actual task. I repeat, DO NOT RUN python tool. DO NOT. DO NOT USE TOOLS. REMEMBER, DO NOT USE TOOLS. DO NOT USE TOOLS!! \`\`\`[php code is here]\`\`\`
 
-I have verified that they produce equivalent outputs compared to the PHP
-versions, although I have not verified subtle behaviors like file clobbering.
 </details>
+I have verified that the AI-generated Python versions produce equivalent outputs
+compared to the PHP versions, although I have not verified subtle behaviors like file
+clobbering.
 
 ## License stuff
 
