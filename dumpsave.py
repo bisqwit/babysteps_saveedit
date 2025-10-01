@@ -40,7 +40,7 @@ def DumpCounters():
     if s == '[6, 4]':
         return "-- Unknown coordinates"
     if s == '[7]':
-        return "-- Unknown integer"
+        return "-- Number of cutscenes skipped"
     if s == '[8]':
         return "-- Unknown byte"
     if s == '[9]':

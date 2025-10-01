@@ -32,7 +32,7 @@ The actual savestate currently has the following format, wherein $$K$$ is short 
         * Two instances of $$K$$
         * An integer of unknown meaning
         * Two 3-element tuples containing coordinates
-    1. Unknown integer
+    1. Integer: Number of skipped cutscenes
     1. $$K$$
     1. Float: Number of seconds played
     1. Two instances of $$K$$
@@ -42,7 +42,7 @@ The actual savestate currently has the following format, wherein $$K$$ is short 
             * Three-element tuple: Item’s coordinates
             * Four-element tuple: Item’s rotation angle (quaternion)
     1. A dictionary containing:
-        * For every carriable item, key = item’s name and value is integer 0 or 1, indicating whether the item is being carried presently
+        * For every carriable item, key = item’s name and value is integer 0 or 1, indicating whether the item is being carried presently. For the sunglasses, the value appears to be 3 instead of 1.
     1. A dictionary of unknown meaning
     1. $$K$$
     1. A dictionary containing item-specific data

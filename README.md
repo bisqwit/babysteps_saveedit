@@ -52,6 +52,7 @@ You can edit, including, but not limited to:
 * Some item-specific data, such as melt-percent for the icecream
 * Number of seconds played
 * Number of steps taken
+* Number of cutscenes skipped (there is a minigame where the more you skip, the harder it becomes to skip, and a [secret ending](https://www.youtube.com/watch?v=mQahQACsvPU) if you skip them all)
 
 See [the savestate format documentation](doc/format.md) for more details on what’s in there.
 

@@ -23,7 +23,7 @@ function DumpCounters()
     case '[6,3]':  return "-- Unknown coordinates";
     case '[6,4]':  return "-- Unknown coordinates";
     case '[6]':    return "-- Unknown structure";
-    case '[7]':    return "-- Unknown integer";
+    case '[7]':    return "-- Number of cutscenes skipped";
     case '[8]':    return "-- Unknown byte";
     case '[9]':    return "-- Number of seconds played";
     case '[10]':   return "-- Unknown byte";
