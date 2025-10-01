@@ -17,7 +17,7 @@ function DumpCounters()
     case '[3,1]':  return "-- Y coordinate (+ = up)";
     case '[3,2]':  return "-- Z coordinate (+ = north)";
     case '[4]':    return "-- Nate looking direction (XZ angle)";
-    case '[5]':    return "-- Nate looking direction related? Not sure";
+    case '[5]':    return "-- Daytime progress (0=morning, 1=night)";
     case '[6]':    return "-- Unknown structure, possibly lantern-related";
     case '[6,2]':  return "-- Unknown counter (seems to be zero if the coordinates are too)";
     case '[6,3]':  return "-- Unknown coordinates";

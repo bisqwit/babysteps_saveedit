@@ -30,7 +30,7 @@ def DumpCounters():
     if s == '[4]':
         return "-- Nate looking direction (XZ angle)"
     if s == '[5]':
-        return "-- Nate looking direction related? Not sure"
+        return "-- Daytime progress (0=morning, 1=night)"
     if s == '[6]':
         return "-- Unknown structure, possibly lantern-related"
     if s == '[6, 2]':

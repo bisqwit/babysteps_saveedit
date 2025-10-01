@@ -34,6 +34,11 @@ The actual savestate currently has the following format:
         * Two instances of unknown boolean values
         * An integer of unknown meaning
         * Two 3-element tuples containing coordinates
+            * When you enter the sand castle, the struct is set to: `[false, true, 27, [Nate’s coordinates
+              139.4, 497.7, 1199.7], [eight metres ahead of Nate 139.3, 497.7, 1207.58]]`.
+            * The booleans are `false, false` if Z < 1198.1,
+            * The booleans are `false, true` if 1198.1 ≤ Z < 1209.03
+            * The booleans are `true, false` if Z ≥ 1209.03
     1. Integer: Number of skipped cutscenes
     1. Boolean of unknown meaning
     1. Float: Number of seconds played
@@ -44,7 +49,7 @@ The actual savestate currently has the following format:
             * Three-element tuple: Item’s coordinates
             * Four-element tuple: Item’s rotation angle (quaternion)
     1. A dictionary containing:
-        * For every carriable item, key = item’s name and value is integer 0 or 1, indicating whether the item is being carried presently. For the sunglasses, the value appears to be 3 instead of 1.
+        * For every carriable item, key = item’s name and value is integer 0 or 1, indicating whether the item is being carried presently. For the sunlasses (SunglassesHat), the value appears to be 3 instead of 1. For Lantern_Grabable, value is 2.
     1. A dictionary of unknown meaning
     1. byte 0xC0 of unknown meaning — the game ignores this field even if you write here some other type value such as float or string
     1. A dictionary containing item-specific data
