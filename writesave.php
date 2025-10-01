@@ -51,6 +51,10 @@ function Encode($d)
       $r .= Encode($v);
     return $r;
   }
+  if(is_bool($d))
+  {
+    return chr(0xC2 + $d);
+  }
   if(is_float($d))
   {
     return chr(0xCA) . pack('G', $d);

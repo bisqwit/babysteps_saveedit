@@ -42,7 +42,7 @@ def DumpCounters():
     if s == '[7]':
         return "-- Number of cutscenes skipped"
     if s == '[8]':
-        return "-- Unknown byte"
+        return "-- Unknown boolean"
     if s == '[9]':
         return "-- Number of seconds played"
     if s == '[10]':
@@ -64,7 +64,7 @@ def DumpCounters():
     if s == '[18]':
         return "-- Item-specific data2, such as IceTrophiesGotten (# of ice creams received)"
     if s == '[19]':
-        return "-- Unknown byte"
+        return "-- Nate lost his balance? True=falling, false=stable"
     if s == '[20]':
         return "-- Nate's XYZ velocity vector (maybe?) The game might normalize this first."
     if s == '[21]':
@@ -124,6 +124,18 @@ def ReadItem():
             k = s[a[0]:a[0] + len_str]
             a[0] += len_str
             return k.decode('utf-8')
+        
+        #if key == 0xC0:
+        #    a[0] += 1
+        #    return None
+        
+        if key == 0xC2:
+            a[0] += 1
+            return False
+        
+        if key == 0xC3:
+            a[0] += 1
+            return True
         
         if key == 0xCA:
             a[0] += 4

@@ -42,6 +42,8 @@ def encode(data):
             print("ERROR: Don't know how to encode strings longer than 31 characters\n")
             return b''
         return bytes([0xA0 + len(utf8_data)]) + utf8_data
+    elif isinstance(data, bool):
+        return bytes([0xC2 + data])
     elif isinstance(data, float):
         return bytes([0xCA]) + struct.pack('!f', data)
     elif isinstance(data, int):

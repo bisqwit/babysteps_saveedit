@@ -24,7 +24,7 @@ function DumpCounters()
     case '[6,4]':  return "-- Unknown coordinates";
     case '[6]':    return "-- Unknown structure";
     case '[7]':    return "-- Number of cutscenes skipped";
-    case '[8]':    return "-- Unknown byte";
+    case '[8]':    return "-- Unknown boolean";
     case '[9]':    return "-- Number of seconds played";
     case '[10]':   return "-- Unknown byte";
     case '[11]':   return "-- Unknown byte";
@@ -35,7 +35,7 @@ function DumpCounters()
     case '[16]':   return "-- Unknown byte";
     case '[17]':   return "-- Item-specific data, such as MeltPercent for IceTrophy";
     case '[18]':   return "-- Item-specific data2, such as IceTrophiesGotten (# of ice creams received)";
-    case '[19]':   return "-- Unknown byte";
+    case '[19]':   return "-- Nate lost his balance? True=falling, false=stable";
     case '[20]':   return "-- Nate's XYZ velocity vector (maybe?) The game might normalize this first.";
     case '[21]':   return "-- Unknown integer";
     case '[22]':   return "-- Audio-related counters";
@@ -96,6 +96,21 @@ function ReadItem()
       $k = substr($s, $a+1, $len);
       $a += 1+$len;
       return $k;
+    }
+    /*if($key == 0xC0)
+    {
+      ++$a;
+      return null;
+    }*/
+    if($key == 0xC2)
+    {
+      ++$a;
+      return false;
+    }
+    if($key == 0xC3)
+    {
+      ++$a;
+      return true;
     }
     if($key == 0xCA) // Float (big-endian 4-byte)
     {
