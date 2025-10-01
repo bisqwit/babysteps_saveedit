@@ -26,18 +26,18 @@ The actual savestate currently has the following format:
 * 25-element list of:
     1. List of flags, each is a string
     1. Integer: chapter number
-    1. byte 0xC0 of unknown meaning
+    1. byte 0xC0 of unknown meaning — the game ignores this field even if you write here some other type value such as float or string
     1. Three-element tuple: Player coordinates (three floats)
     1. Float: XZ angle of Nate’s pelvis
     1. Float: Something related to Nate’s angle
-    1. Unknown 5-element tuple, containing:
+    1. Unknown 5-element tuple, possibly lantern-related, containing:
         * Two instances of unknown boolean values
         * An integer of unknown meaning
         * Two 3-element tuples containing coordinates
     1. Integer: Number of skipped cutscenes
     1. Boolean of unknown meaning
     1. Float: Number of seconds played
-    1. Two instances of byte 0xC0 of unknown meaning
+    1. Two instances of byte 0xC0 of unknown meaning — the game does NOT ignore them
     1. An integer of unknown meaning
     1. A dictionary containing:
         * For every movable item, key = item’s name and value is a two-element tuple, containing:
@@ -46,12 +46,12 @@ The actual savestate currently has the following format:
     1. A dictionary containing:
         * For every carriable item, key = item’s name and value is integer 0 or 1, indicating whether the item is being carried presently. For the sunglasses, the value appears to be 3 instead of 1.
     1. A dictionary of unknown meaning
-    1. byte 0xC0 of unknown meaning
+    1. byte 0xC0 of unknown meaning — the game ignores this field even if you write here some other type value such as float or string
     1. A dictionary containing item-specific data
     1. Another dictionary containing item-specific data
     1. Boolean value: false if Nate has balance, true if he is falling
     1. Three-element tuple of floats, of unknown purpose (possibly Nate’s velocity vector)
-    1. An integer of unknown meaning
+    1. An integer of unknown meaning, appears to correlate with the chapter number
     1. Dictionary: Key = audiokey_timesplayed, value = integer
     1. Dictionary: Key = audiokey_lastplay, value = string datetime
     1. Integer: The number of steps taken

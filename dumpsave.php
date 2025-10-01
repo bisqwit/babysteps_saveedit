@@ -11,14 +11,14 @@ function DumpCounters()
   {
     case '[0,0]':  return "-- Event or item unlocking flags, in order of activation";
     case '[1]':    return "-- Chapter number (0=poison swamp, 9=complete)";
-    case '[2]':    return "-- Unknown byte";
+    case '[2]':    return "-- Unknown byte -- apparently ignored by the game";
     case '[3]':    return "-- Player coordinates (X,Y,Z). Unit ~ meters";
     case '[3,0]':  return "-- X coordinate (+ = east. Range: 0 <= x < 512. Wraps at either side.)";
     case '[3,1]':  return "-- Y coordinate (+ = up)";
     case '[3,2]':  return "-- Z coordinate (+ = north)";
     case '[4]':    return "-- Nate looking direction (XZ angle)";
     case '[5]':    return "-- Nate looking direction related? Not sure";
-    case '[6]':    return "-- Unknown structure";
+    case '[6]':    return "-- Unknown structure, possibly lantern-related";
     case '[6,2]':  return "-- Unknown counter (seems to be zero if the coordinates are too)";
     case '[6,3]':  return "-- Unknown coordinates";
     case '[6,4]':  return "-- Unknown coordinates";
@@ -32,12 +32,12 @@ function DumpCounters()
     case '[13]':   return "-- Known movable items. itemname => coordinates (X,Y,Z) and rotation (quaternion).";
     case '[14]':   return "-- Known movable items, is-being-carried flag for each";
     case '[15]':   return "-- Unknown dict";
-    case '[16]':   return "-- Unknown byte";
+    case '[16]':   return "-- Unknown byte -- apparently ignored by the game";
     case '[17]':   return "-- Item-specific data, such as MeltPercent for IceTrophy";
     case '[18]':   return "-- Item-specific data2, such as IceTrophiesGotten (# of ice creams received)";
     case '[19]':   return "-- Nate lost his balance? True=falling, false=stable";
     case '[20]':   return "-- Nate's XYZ velocity vector (maybe?) The game might normalize this first.";
-    case '[21]':   return "-- Unknown integer";
+    case '[21]':   return "-- Unknown integer, appears to correlate with chapter number";
     case '[22]':   return "-- Audio-related counters";
     case '[23]':   return "-- Audio-related timestamps";
     case '[24]':   return "-- Number of steps taken";

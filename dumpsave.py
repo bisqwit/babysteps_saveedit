@@ -18,7 +18,7 @@ def DumpCounters():
     if s == '[1]':
         return "-- Chapter number (0=poison swamp, 9=complete)"
     if s == '[2]':
-        return "-- Unknown byte"
+        return "-- Unknown byte -- apparently ignored by the game"
     if s == '[3]':
         return "-- Player coordinates (X,Y,Z). Unit ~ meters"
     if s == '[3, 0]':
@@ -32,7 +32,7 @@ def DumpCounters():
     if s == '[5]':
         return "-- Nate looking direction related? Not sure"
     if s == '[6]':
-        return "-- Unknown structure"
+        return "-- Unknown structure, possibly lantern-related"
     if s == '[6, 2]':
         return "-- Unknown counter (seems to be zero if the coordinates are too)"
     if s == '[6, 3]':
@@ -58,7 +58,7 @@ def DumpCounters():
     if s == '[15]':
         return "-- Unknown dict"
     if s == '[16]':
-        return "-- Unknown byte"
+        return "-- Unknown byte -- apparently ignored by the game"
     if s == '[17]':
         return "-- Item-specific data, such as MeltPercent for IceTrophy"
     if s == '[18]':
@@ -68,7 +68,7 @@ def DumpCounters():
     if s == '[20]':
         return "-- Nate's XYZ velocity vector (maybe?) The game might normalize this first."
     if s == '[21]':
-        return "-- Unknown integer"
+        return "-- Unknown integer, appears to correlate with chapter number"
     if s == '[22]':
         return "-- Audio-related counters"
     if s == '[23]':
